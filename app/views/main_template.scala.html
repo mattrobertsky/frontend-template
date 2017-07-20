@@ -1,15 +1,12 @@
-
+@import config.AppConfig
+@import uk.gov.hmrc.play.views.html.layouts
 @(title: String,
-  mainContent: Html,
   sidebarLinks: Option[Html] = None,
   contentHeader: Option[Html] = None,
   bodyClasses: Option[String] = None,
   mainClass: Option[String] = None,
-  scriptElem: Option[Html] = None)
-  (implicit messages: Messages, request : Request[_], configuration: AppConfig)
+  scriptElem: Option[Html] = None)(mainContent: Html)(implicit messages: Messages, request : Request[_], configuration: AppConfig)
 
-@import config.AppConfig
-@import uk.gov.hmrc.play.views.html.layouts
 @serviceInfoContent = {}
 
 @sidebar = {
@@ -18,15 +15,11 @@
     }
 }
 
-
-@govuk_wrapper(
-               title = title,
-               mainClass = mainClass,
+@govuk_wrapper(title,
+               mainClass,
                bodyClasses = bodyClasses,
                sidebar = sidebar,
                contentHeader = contentHeader,
                mainContent = mainContent,
                serviceInfoContent = serviceInfoContent,
-               scriptElem = scriptElem
-)
-
+               scriptElem = scriptElem)
